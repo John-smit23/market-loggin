@@ -1,4 +1,4 @@
-from app import app, db, User
+from app import app, db, User  # type: ignore
 import bcrypt
 
 with app.app_context():
