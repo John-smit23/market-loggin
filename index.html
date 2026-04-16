@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block title %}Millfield Services — Connecting your local community{% endblock %}<!-- change company name here -->
+
+{% block extra_head %}
+<style>
+    /* put your hero/background image in static/images/ and call it main-page-image.jpg (farm landscape) */
+    .hero { background-image: url("{{ url_for('static', filename='images/main-page-image.jpg') }}"); }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- hero section -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-badge"><span class="hero-badge__dot"></span> 24 verified local partners now listing</div>
+            <h1>
+                <span class="white">Fresh from your</span><!-- change headline here -->
+                <span class="gold">local community</span>
+            </h1>
+            <p>Browse and order directly from verified Millfield farmers and food producers. Choose collection or home delivery — always fresh, always local.</p><!-- change description here -->
+            <div class="hero-btns">
+                <a href="{{ url_for('login') }}" class="btn-gold">Browse Listings <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                <a href="{{ url_for('register') }}" class="btn-outline">Join MS — Free</a><!-- change initials here -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- how it works section -->
+<section class="section bg-white">
+    <div class="section-inner" style="text-align:center;">
+        <span class="section-label">SIMPLE PROCESS</span>
+        <h2 class="section-title">How Millfield Services works</h2><!-- change company name here -->
+        <p class="section-sub" style="max-width:500px; margin:0 auto 40px;">Three steps to connect with local providers — collect or delivered to your door.</p>
+        <div class="steps">
+            <div class="step">
+                <span class="step-num">01</span>
+                <div class="step-icon"><img src="{{ url_for('static', filename='images/icons/search.svg') }}" width="24" height="24" alt=""></div>
+                <h3>Browse local listings</h3>
+                <p>Explore services and products from verified community members.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">02</span>
+                <div class="step-icon"><img src="{{ url_for('static', filename='images/icons/shopping-basket.svg') }}" width="24" height="24" alt=""></div>
+                <h3>Place your order</h3>
+                <p>Add items to one basket and choose collection or home delivery.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">03</span>
+                <div class="step-icon"><img src="{{ url_for('static', filename='images/icons/coins.svg') }}" width="24" height="24" alt=""></div>
+                <h3>Earn loyalty credits</h3>
+                <p>Every purchase earns credits applied automatically at checkout.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- products section -->
+<section class="section bg-cream">
+    <div class="section-inner">
+        <h2 class="section-title">This week's produce</h2>
+        <div class="product-grid">
+
+            <div class="product-card">
+                <!-- add your image here (honey) — save it as static/images/product-1.jpg -->
+                <img src="{{ url_for('static', filename='images/product-1.jpg') }}" alt="Honey">
+                <div class="product-card-body">
+                    <p class="product-farm">HARTLEY FARM</p>
+                    <h3 class="product-name">Organic Wildflower Honey</h3>
+                    <p class="product-desc">Raw, unfiltered wildflower honey from our local hives.</p>
+                    <p class="product-price">£4.50 <span style="font-size:13px;color:var(--grey);font-weight:400;">/ jar</span></p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <!-- add your image here (veg box) — save it as static/images/product-2.jpg -->
+                <img src="{{ url_for('static', filename='images/product-2.jpg') }}" alt="Veg Box">
+                <div class="product-card-body">
+                    <p class="product-farm">GREEN VALLEY FARM</p>
+                    <h3 class="product-name">Seasonal Veg Box</h3>
+                    <p class="product-desc">Freshest seasonal vegetables, handpicked from the field.</p>
+                    <p class="product-price">£6.00 <span style="font-size:13px;color:var(--grey);font-weight:400;">/ box</span></p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <!-- add your image here (sourdough bread) — save it as static/images/product-3.jpg -->
+                <img src="{{ url_for('static', filename='images/product-3.jpg') }}" alt="Sourdough">
+                <div class="product-card-body">
+                    <p class="product-farm">THE OLD MILL BAKERY</p>
+                    <h3 class="product-name">Sourdough Loaf</h3>
+                    <p class="product-desc">Slow fermented for 48 hours using local stoneground flour.</p>
+                    <p class="product-price">£3.80 <span style="font-size:13px;color:var(--grey);font-weight:400;">/ loaf</span></p>
+                </div>
+            </div>
+
+            <!-- this one is unavailable so it has a disabled button -->
+            <div class="product-card">
+                <!-- add your image here (eggs) — save it as static/images/product-4.jpg -->
+                <img src="{{ url_for('static', filename='images/product-4.jpg') }}" alt="Eggs">
+                <div class="product-card-body">
+                    <p class="product-farm">SUNRISE FARM</p>
+                    <h3 class="product-name">Free Range Eggs</h3>
+                    <p class="product-desc">Genuine free-range eggs with rich golden yolks.</p>
+                    <p class="product-price crossed">£2.80 <span style="font-size:13px;font-weight:400;">/ dozen</span></p>
+                    <button class="btn-unavailable" disabled>Currently Unavailable</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

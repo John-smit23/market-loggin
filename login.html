@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — Millfield Services</title><!-- change company name here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="auth-page">
+    <div class="auth-box">
+        <a href="{{ url_for('home') }}" class="auth-back">← Back to Home</a>
+        <h2 class="auth-form-title">Sign In</h2>
+        <p class="auth-form-sub">New to MS? <a href="{{ url_for('register') }}">Create an account</a></p><!-- change initials here -->
+        {% if error %}<div class="error-box">{{ error }}</div>{% endif %}
+        <form action="{{ url_for('login') }}" method="POST">
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <div class="input-wrap">
+                    <span class="input-icon"><img src="{{ url_for('static', filename='images/icons/mail.svg') }}" width="16" height="16" alt=""></span>
+                    <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div class="input-wrap">
+                    <span class="input-icon"><img src="{{ url_for('static', filename='images/icons/lock.svg') }}" width="16" height="16" alt=""></span>
+                    <input type="password" name="password" class="form-input form-input--pw" placeholder="Enter your password" required>
+                    <button type="button" class="input-toggle" onclick="togglePw(this)"><img src="{{ url_for('static', filename='images/icons/eye.svg') }}" width="18" height="18" alt=""></button>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label class="remember"><input type="checkbox" name="remember"> Remember me</label>
+                <a href="{{ url_for('forgot_password') }}" class="forgot-link">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn-submit">
+                Sign In <img src="{{ url_for('static', filename='images/icons/arrow-right.svg') }}" width="18" height="18" alt="" class="icon-white">
+            </button>
+        </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

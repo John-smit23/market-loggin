@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Millfield Services{% endblock %}</title><!-- change company name here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-wrap">
+        <a href="{{ url_for('home') }}" class="nav-logo">
+            <img src="{{ url_for('static', filename='images/glh-logo.svg') }}" alt="" width="32" height="32">
+            <div>
+                <span class="nav-logo__name">Millfield Services</span><!-- change company name here -->
+                <span class="nav-logo__tag">YOUR LOCAL COMMUNITY HUB</span><!-- change tagline here -->
+            </div>
+        </a>
+        <!-- shows username and sign out if logged in, otherwise shows login/register -->
+        <div class="nav-links">
+            {% if session.user_id %}
+                <span class="nav-username">{{ session.user_name }}</span>
+                <a href="{{ url_for('logout') }}" class="nav-login">Sign Out</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="nav-login">Log In</a>
+                <a href="{{ url_for('register') }}" class="nav-register">Register Free</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% with messages = get_flashed_messages(with_categories=True) %}{% if messages %}<div class="flash-wrap">{% for c, m in messages %}<div class="flash {{ c }}">{{ m }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+<footer class="footer">
+    <p>© 2026 Millfield Services. All rights reserved.</p><!-- change company name here -->
+</footer>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
