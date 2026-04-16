@@ -1,1 +1,2 @@
-from app import db, User
+from app import db, User  # type: ignore
+
